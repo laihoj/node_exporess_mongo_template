@@ -1,10 +1,10 @@
 <nav class="navbar">
   <div class="container">
 	<a href="/">Home</a> | 
-	<%if(!currentUser) {%>
+	<%if(!current_user) {%>
 		<a href="/auth/login">Login</a>
 	<% } else { %>
-		<a href="/users/<%=currentUser.username%>"><%=currentUser.username%></a> | 
+		<a href="/auth/users/<%=current_user.id%>"><%=current_user.username%></a> | 
 		<a href="/auth/logout">Logout</a>
 	<% } %>
    </div>

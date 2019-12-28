@@ -1,0 +1,14 @@
+<%- include ('./../partials/default_header') %>
+<div class="container centered">
+	<% if(current_user) { %>
+		Username: <%= current_user.username %>
+		<br>
+		ID: <%= current_user.id %>
+		<br>
+	<% } else { %>
+	Try <a href="/auth/login">logging in</a>
+	<% } %>
+</div>
+
+
+<%- include ('./../partials/default_footer') %>

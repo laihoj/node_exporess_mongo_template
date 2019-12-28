@@ -1,17 +1,19 @@
-const 	express 	= require("express"),
-	 	router 		= express.Router(),
-		passport 	= require("passport");
-
-
-const db = require('./../db.js');
-const utils = require('./../utils.js');
 /*Example*/
-/*
-router.get("/", function(req, res) {
-	res.render("pages/your_index_page");
-});
 
-module.exports = router;
+/*
+const 	mongoose 	= require('mongoose'),
+		url 		= process.env.DATABASEURL,
+		User 		= require("./../models/default_user");
+mongoose.connect(url, { useNewUrlParser: true , useUnifiedTopology: true});
+
+const all = async function() {
+	let res = await User.find({}, function(err, foundUsers) {
+		if(err) {
+			console.log(err);
+		}
+	});
+	return res;
+}
 */
 
 /*********************************************************************************
@@ -19,9 +21,6 @@ YOUR CODE HERE
 *********************************************************************************/
 
 
-
 /*********************************************************************************
 YOUR CODE OVER
 *********************************************************************************/
-
-module.exports = router; //uncomment me

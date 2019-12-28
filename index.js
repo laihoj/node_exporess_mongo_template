@@ -1,21 +1,16 @@
 if (process.env.NODE_ENV !== 'production') {
-  require('dotenv').config();
+  require('dotenv').config();	//looks for a file named '.env' where key=value pairs can be defined
 }
 
 const bodyParser 				= require("body-parser"),
 	express 					= require("express"),
-	request						= require("request"),
+	request						= require("request"),	//maybe not so important
 	flash						= require("connect-flash"),
 	passport 					= require("passport"),
 	LocalStrategy 				= require("passport-local"),
 	passportLocalMongoose 		= require("passport-local-mongoose"),
 	methodOverride				= require("method-override"),
 	app							= express();
-
-const User = require("./models/user");
-
-const auth = require('./auth.js');
-
 
 app.use(require("express-session")({
 	secret: process.env.SECRET,
@@ -34,44 +29,40 @@ app.use(methodOverride("_method"));
 app.use(flash());
 
 app.use(function(req, res, next){
-	res.locals.currentUser = req.user;
-	res.locals.error 	= req.flash("error");
-	res.locals.success 	= req.flash("success");
-	res.locals.warning 	= req.flash("warning");
+	res.locals.current_user = req.user;				//developer can make use of these
+	res.locals.error 	= req.flash("error");		//developer can make use of these
+	res.locals.success 	= req.flash("success");		//developer can make use of these
+	res.locals.warning 	= req.flash("warning");		//developer can make use of these
 
-	res.header("Access-Control-Allow-Origin", "*");
-  	res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+	res.header("Access-Control-Allow-Origin", "*");													//i wonder what these do
+  	res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");	//i wonder what these do
   	
 	next();
 });
 
+const User = require("./models/default_user");
 passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 const domain = process.env.DOMAIN || "localhost:3000";
 
-const db = require('./db.js');
-const utils = require('./utils.js');
+/*---------------------------------------------------------------------------------*/
+app.use(require("./routes/app.js"));	//TODO: Put your code in here
+/*---------------------------------------------------------------------------------*/
 
-app.use('/auth',require("./routes/auth"));
+/*
+Routes are served on a first come first served basis.
+I.e. if you define your own /auth or / paths, they will 'overwrite' the default paths
+*/
+app.use('/auth', require("./routes/auth"));
 
 app.get("/", async function(req, res) {
 	let data = {
 		message: "Hello World"
 	};
-	res.render("pages/index", {data:data});
+	res.render("pages/default_index", {data:data});
 });
-
-/*********************************************************************************
-YOUR CODE HERE
-*********************************************************************************/
-app.use(require("./routes/app.js"));
-
-
-/*********************************************************************************
-YOUR CODE OVER
-*********************************************************************************/
 
 app.listen(process.env.PORT || 3000, function() {
 	console.log("App server is running");

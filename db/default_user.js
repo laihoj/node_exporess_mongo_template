@@ -1,14 +1,52 @@
 /********************************************************
 Mongoose.js and MongoDB
 ********************************************************/
-const mongoose = require('mongoose')
-
-var url = process.env.DATABASEURL;
+const 	mongoose 	= require('mongoose'),
+		url 		= process.env.DATABASEURL,
+		User 		= require("./../models/default_user");
 mongoose.connect(url, { useNewUrlParser: true , useUnifiedTopology: true});
 
-const User = require("./../models/user");
+/********************************************************
+Exports
+********************************************************/
 
-exports.all = async function() {
+exports.createUser = async function(username, password) {
+	let user;
+	try {
+		user = await save(username, password);
+	} catch(err) {
+		console.log(err);
+	}
+	return user;
+}
+
+exports.getUserById = async function(userId) {
+	let userObj;
+	try {
+		userObj = await byId(userId);
+	} catch(err) {
+		console.log(err);
+	}
+	return userObj;
+}
+
+exports.deleteUser = async function(userObj) {
+	try {
+		await destroy(userObj);
+	} catch(err) {
+		console.log(err);
+	}
+	return userObj;
+}
+
+
+
+/********************************************************
+Generated
+********************************************************/
+
+
+const all = async function() {
 	let res = await User.find({}, function(err, foundUsers) {
 		if(err) {
 			console.log(err);
@@ -17,7 +55,7 @@ exports.all = async function() {
 	return res;
 }
 
-exports.byID = async function(id) {
+const byID = async function(id) {
 	let res = await User.findOne({_id: id}, function(err, foundUser) {
 		if(err) {
 			console.log("No user found");
@@ -26,7 +64,7 @@ exports.byID = async function(id) {
 	return res;
 }
 
-exports.get = async function(user) {
+const get = async function(user) {
 	let res = await User.findOne({username: user}, function(err, foundUser) {
 		if(err) {
 			console.log(err);
@@ -36,7 +74,7 @@ exports.get = async function(user) {
 }
 
 //if username already taken and password matches, user is simply logged in
-exports.save = async function(username, password) {
+const save = async function(username, password) {
 	let foundByUsername = await exports.get(username);
 	if(foundByUsername) {
   		return false;
@@ -49,7 +87,7 @@ exports.save = async function(username, password) {
 	}
 }
 
-exports.delete = async function(id) {
+const destroy = async function(id) {
 	let res = await exports.byID(id);	
 	res.delete(function(err, deletedUser) {
 		if(err || !deletedUser) {
