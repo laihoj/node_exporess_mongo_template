@@ -4,41 +4,41 @@ Copy this template as a starting point when making simple web apps. Probably sav
 
 This is a node.js + express + mongoDB web app template with user authentication managed by the framework.
 
-.
-+-- package.json
-+-- package-lock.json
-+-- db.js
-+-- index.js
-+-- utils.js
-+-- db
-|   +-- default_user.js
-|   +-- app.js
-+-- models
-|   +-- default_user.js
-+-- public
-|   +-- css
-|   |   +-- normalize.css
-|   |   +-- skeleton.css
-|   |   +-- smooth_box_shadow.css
-|   |   +-- default.css
-|   |   +-- style.css
-|   +-- js
-|   |   +-- default.js
-|   |   +-- index.js
-+-- routes
-|   +-- auth.js
-|   +-- app.js
-+-- views
-|   +-- pages
-|   |   +-- default_index.ejs
-|   |   +-- default_login.ejs
-|   |   +-- default_register.ejs
-|   |   +-- default_user.ejs
-|   +-- partials
-|   |   +-- default_flashes.ejs
-|   |   +-- default_footer.ejs
-|   |   +-- default_header.ejs
-|   |   +-- default_navbar.ejs
+.  
++-- package.json  
++-- package-lock.json  
++-- db.js  
++-- index.js  
++-- utils.js  
++-- db  
+|   +-- default_user.js  
+|   +-- app.js  
++-- models  
+|   +-- default_user.js  
++-- public  
+|   +-- css  
+|   |   +-- normalize.css  
+|   |   +-- skeleton.css  
+|   |   +-- smooth_box_shadow.css  
+|   |   +-- default.css  
+|   |   +-- style.css  
+|   +-- js  
+|   |   +-- default.js  
+|   |   +-- index.js  
++-- routes  
+|   +-- auth.js  
+|   +-- app.js  
++-- views  
+|   +-- pages  
+|   |   +-- default_index.ejs  
+|   |   +-- default_login.ejs  
+|   |   +-- default_register.ejs  
+|   |   +-- default_user.ejs  
+|   +-- partials  
+|   |   +-- default_flashes.ejs  
+|   |   +-- default_footer.ejs  
+|   |   +-- default_header.ejs  
+|   |   +-- default_navbar.ejs  
 
 
 To effectively use this, you should have the following command line tools installed:
