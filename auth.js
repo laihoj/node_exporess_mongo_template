@@ -6,3 +6,5 @@ exports.isAuthenticated = function(req,res,next) {
 	req.flash("error", "Please login first");
 	res.redirect("/login");
 }
+
+// exports.login = function()

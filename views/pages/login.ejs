@@ -1,0 +1,23 @@
+<%- include ('./../partials/header') %>
+	<div class="container centered box">
+		<form action="/auth/login" method="post">
+			<h5>Login</h5>
+			<label for="username">User</label>
+			<input type="text" name="username" id="username" placeholder="username" required>
+			<br>
+			<br>
+			<label for="password">Password</label>
+			<input type="password" name="password" placeholder="password" id="password" required>
+			<br>
+			<br>
+			<input id="login_submit_button" type="submit" class="button-primary" value="Log In">
+			<br>
+			<br>
+			<p>New user? <a href="/auth/register">Sign up here</a></p>
+		</form>
+
+		<script>
+		document.getElementById("login_submit_button").focus();
+		</script>
+	</div>
+<%- include ('./../partials/footer') %>

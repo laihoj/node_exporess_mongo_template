@@ -1,0 +1,31 @@
+.centered {
+  padding: 70px 0;
+  text-align: center;
+}
+
+.alert {
+    position: relative;
+    padding: 16px;
+    color: #032f62;
+    background-color: #dbedff;
+    border: 1px solid rgba(27,31,35,0.15);
+    border-radius: 3px;
+}
+
+.alert-success {
+    color: #165c26;
+    background-color: #dcffe4;
+    border-color: rgba(27,31,35,0.15);
+}
+
+.alert-error {
+    color: #86181d;
+    background-color: #ffdce0;
+    border-color: rgba(27,31,35,0.15);
+}
+
+.alert-warning {
+    color: #735c0f;
+    background-color: #fffbdd;
+    border-color: rgba(27,31,35,0.15);
+}
